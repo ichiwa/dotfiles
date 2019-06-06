@@ -109,10 +109,10 @@ set -x RBENV_ROOT $HOME/.anyenv/envs/rbenv
 set -x PATH $RBENV_ROOT/bin $PATH
 set -x PATH $RBENV_ROOT/shims $PATH
 
-# ndenv
-set -x NDENV_ROOT $HOME/.anyenv/envs/ndenv
-set -x PATH $NDENV_ROOT/bin $PATH
-set -x PATH $NDENV_ROOT/shims $PATH
+# nodenv
+set -x NODENV_ROOT $HOME/.anyenv/envs/nodenv
+set -x PATH $NODENV_ROOT/bin $PATH
+set -x PATH $NODENV_ROOT/shims $PATH
 
 # pyenv
 set -x PYENV_ROOT $HOME/.anyenv/envs/pyenv
