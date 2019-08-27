@@ -50,6 +50,10 @@ function update_macos --description 'Update mac OS by CLI'
   softwareupdate -i -a
 end
 
+function cd_ghq --description 'Change ghq source directory'
+  cd (ghq root)/(ghq list | peco)
+end
+
 function fish_prompt
   if [ $status -eq 0 ]
     set status_face (set_color white)"( ´ω` ) < "
@@ -128,8 +132,8 @@ set -x PATH $GOENV_ROOT/shims $PATH
 anyenv versions
 
 # oracle
-set -x ORACLE_HOME $HOME/oracle
-set -x PATH $ORACLE_HOME/client $PATH
+# set -x ORACLE_HOME $HOME/oracle
+# set -x PATH $ORACLE_HOME/client $PATH
 
 # rust
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin

@@ -1,5 +1,3 @@
-SHELL:=/usr/local/bin/fish
-
 .PHONY: install
 install:
 	@echo "===> Install java...\n"
@@ -11,6 +9,9 @@ install:
 
 	@echo "===> Install fish peco...\n"
 	brew install peco
+
+	@echo "===> Install fish ghq...\n"
+	brew install ghq
 
 	@echo "===> Enable fish shell...\n"
 	sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
@@ -25,18 +26,18 @@ install:
 	@echo "===> Install fisher...\n"
 	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 
-	fish 
+	fish
 	source $(HOME)/.config/fish/config.fish
 
 	@echo "===> Install rust...\n"
-	curl https://sh.rustup.rs -sSf | sh 
+	curl https://sh.rustup.rs -sSf | sh
 
 	mkdir -p $(HOME)/.anyenv/envs
 
 	anyenv install rbenv
 	anyenv install ndenv
 	anyenv install pyenv
-	anyenv install goenv	
+	anyenv install goenv
 
 .PHONY: setup-fish-shell
 setup-fish-shell:
@@ -47,8 +48,9 @@ setup-fish-shell:
 
 .PHONY: update-fish-shell
 update-fish-shell:
+	$(eval SHELL:=/usr/local/bin/fish)
+
 	@echo "===> Update fish config...\n"
 	cp -fr .config $(HOME)
 
-	@echo "===> Load your new config source." 
-	source $(HOME)/.config/fish/config.fish
+	@echo "===> Load your new config source."
