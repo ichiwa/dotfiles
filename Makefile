@@ -17,9 +17,6 @@ install:
 	sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
 	chsh -s /usr/local/bin/fish
 
-	@echo "===> clone anyenv...\n"
-	git clone https://github.com/riywo/anyenv ~/.anyenv
-
 	@echo "===> Create fish config directory...\n"
 	cp -fr .config $(HOME)
 
@@ -29,13 +26,20 @@ install:
 	fish
 	source $(HOME)/.config/fish/config.fish
 
-	@echo "===> Install rust...\n"
-	curl https://sh.rustup.rs -sSf | sh
+	# @echo "===> Install rust...\n"
+	# curl https://sh.rustup.rs -sSf | sh
 
+.PHONY: setup-anyenv
+setup-anyenv:
+	@echo "===> clone anyenv...\n"
+	git clone https://github.com/riywo/anyenv ~/.anyenv
+
+	@echo "===> Create anyenv envs directories...\n"
 	mkdir -p $(HOME)/.anyenv/envs
-
+	
+	anyenv install --init
 	anyenv install rbenv
-	anyenv install ndenv
+	anyenv install nodenv
 	anyenv install pyenv
 	anyenv install goenv
 
@@ -44,7 +48,7 @@ setup-fish-shell:
 	@echo $(SHELL)
 
 	@echo "===> Install fish plugins...\n"
-	fisher jethrokuan/fzf jethrokuan/z
+	fisher add jethrokuan/fzf jethrokuan/z
 
 .PHONY: update-fish-shell
 update-fish-shell:
