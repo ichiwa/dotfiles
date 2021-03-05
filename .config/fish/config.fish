@@ -35,7 +35,7 @@ function kill_port --description 'Kill proces to use port'
 end
 
 function mov_to_gif --description 'Movie file to gif for github'
-  ffmpeg -i $argv[1] -vf scale=640:-1 -r 10 $argv[1].gif
+  ffmpeg -i $argv[1] -vf scale=1280:-1 -r 10 $argv[1].gif
 end
 
 function clean_local_branch --description 'clean local branchs merged master'
