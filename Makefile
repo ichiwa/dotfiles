@@ -1,8 +1,9 @@
 .PHONY: install
 install:
 	@echo "===> Install java...\n"
+	git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
 	brew update && brew cleanup
-	brew cask install java
+	brew install java
 
 	@echo "===> Install fish shell...\n"
 	brew install fish
@@ -48,7 +49,7 @@ setup-fish-shell:
 	@echo $(SHELL)
 
 	@echo "===> Install fish plugins...\n"
-	fisher add jethrokuan/fzf jethrokuan/z
+	fisher install jethrokuan/fzf jethrokuan/z
 
 .PHONY: update-fish-shell
 update-fish-shell:
