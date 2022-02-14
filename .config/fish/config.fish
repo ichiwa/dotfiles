@@ -140,3 +140,5 @@ set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 # for webpack build
 set -x NODE_OPTIONS "--max-old-space-size=4096"
+
+set -x LANG ja_JP.UTF-8
