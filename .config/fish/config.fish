@@ -39,11 +39,11 @@ function mov_to_gif --description 'Movie file to gif for github'
 end
 
 function clean_local_branch --description 'clean local branchs merged master'
-  git branch --merged master | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
+  git branch --merged develop | grep -vE '^\*$|develop$' | xargs -I % git branch -d %
 end
 
 function clean_remote_branch --description 'clean remote branchs merged master'
-  git branch -r --merged master | grep -v -e master -e develop | sed -e 's% *origin/%%' | xargs -I% git push --delete origin %
+  git branch -r --merged develop | grep -v -e develop | sed -e 's% *origin/%%' | xargs -I% git push --delete origin %
 end
 
 function update_macos --description 'Update mac OS by CLI'
@@ -102,7 +102,7 @@ set PATH /Users/(whoami)/.Local/bin $PATH
 set -x JAVA_HOME (/usr/libexec/java_home -v "1.8")
 
 # alias
-alias delete-merged-branch="git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d"
+alias delete-merged-branch="git branch --merged|egrep -v '\\*|develop'|xargs git branch -d"
 alias readlink="greadlink"
 
 # anyenv
