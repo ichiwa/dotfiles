@@ -1,11 +1,11 @@
 .PHONY: install
 install:
-	@echo "===> Install java...\n"
-	git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-	brew update && brew cleanup
-	brew install java
+	#@echo "===> Install java...\n"
+	#git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+	#brew update && brew cleanup
+	#brew install java
 
-	@echo "===> Install fish shell...\n"
+	@echo "===> Install fish slshell...\n"
 	brew install fish
 
 	@echo "===> Install fish peco...\n"
@@ -15,8 +15,8 @@ install:
 	brew install ghq
 
 	@echo "===> Enable fish shell...\n"
-	sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
-	chsh -s /usr/local/bin/fish
+	sudo sh -c "echo '/opt/homebrew/bin/fish' >> /etc/shells"
+	chsh -s /opt/homebrew/bin/fish
 
 	@echo "===> Create fish config directory...\n"
 	cp -fr .config $(HOME)
