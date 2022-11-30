@@ -17,7 +17,7 @@ function dc_rebuild --description 'docker-compose rebuild'
 	docker-compose up -d $argv
 end
 
-function dc_all_clean 'clearn docker all image, containers'
+function dc_all_clean --description 'clearn docker all image, containers'
   docker rm $(docker ps -a -q --filter status=exited)
   docker rmi $(docker images -q)
   docker volume rm $(docker volume ls | awk '{print $2}')
