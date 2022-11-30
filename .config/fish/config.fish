@@ -6,11 +6,11 @@ function dc --description 'docker-compose'
   docker-compose $argv
 end
 
-function dc_logs --description 'docker-compose logs'
+function dclogs --description 'docker-compose logs'
   docker-compose logs --follow --tail=500 $argv
 end
 
-function dc_rebuild --description 'docker-compose rebuild'
+function dcrebuild --description 'docker-compose rebuild'
   docker-compose kill $argv
 	docker-compose rm -f $argv
 	docker-compose build $argv
