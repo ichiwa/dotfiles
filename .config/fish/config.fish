@@ -2,6 +2,28 @@ function hello_world
   echo Hello World $argv
 end
 
+function dc --description 'docker-compose'
+  docker-compose $argv
+end
+
+function dc_logs --description 'docker-compose logs'
+  docker-compose logs --follow --tail=500 $argv
+end
+
+function dc_rebuild --description 'docker-compose rebuild'
+  docker-compose kill $argv
+	docker-compose rm -f $argv
+	docker-compose build $argv
+	docker-compose up -d $argv
+end
+
+function dc_all_clean 'clearn docker all image, containers'
+  docker rm $(docker ps -a -q --filter status=exited)
+  docker rmi $(docker images -q)
+  docker volume rm $(docker volume ls | awk '{print $2}')
+  rm -rf ~/Library/Containers/com.docker.docker/Data/* 
+end
+
 function peco_history --description 'search previously used command through peco'
   history --search --contains $argv[1] | peco
 end

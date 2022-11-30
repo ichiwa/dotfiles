@@ -1,3 +1,5 @@
+FISH=/opt/homebrew/bin/fish
+
 .PHONY: install
 install:
 	#@echo "===> Install java...\n"
@@ -15,8 +17,8 @@ install:
 	brew install ghq
 
 	@echo "===> Enable fish shell...\n"
-	sudo sh -c "echo '/opt/homebrew/bin/fish' >> /etc/shells"
-	chsh -s /opt/homebrew/bin/fish
+	sudo sh -c "echo '$(FISH)' >> /etc/shells"
+	chsh -s $FISH
 
 	@echo "===> Create fish config directory...\n"
 	cp -fr .config $(HOME)
@@ -53,7 +55,7 @@ setup-fish-shell:
 
 .PHONY: update-fish-shell
 update-fish-shell:
-	$(eval SHELL:=/usr/local/bin/fish)
+	$(eval SHELL:=$(FISH))
 
 	@echo "===> Update fish config...\n"
 	cp -fr .config $(HOME)
