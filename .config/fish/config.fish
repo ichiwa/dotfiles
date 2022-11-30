@@ -149,6 +149,7 @@ set -x PATH $PYENV_ROOT/shims $PATH
 set -x GOENV_ROOT $HOME/.anyenv/envs/goenv
 set -x PATH $GOENV_ROOT/bin $PATH
 set -x PATH $GOENV_ROOT/shims $PATH
+eval "$(goenv init -)"
 
 # show envs settings
 anyenv versions
